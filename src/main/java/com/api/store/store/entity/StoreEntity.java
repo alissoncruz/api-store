@@ -21,7 +21,6 @@ public class StoreEntity implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String name;
-
-    @OneToOne
-    private AddressEntity addressEntity;
+    @Transient
+    private Address address;
 }

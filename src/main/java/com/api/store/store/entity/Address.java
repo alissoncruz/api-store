@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 @Entity(name="address")
-public class AddressEntity {
+public class Address {
 
     @Id
     private Long id;

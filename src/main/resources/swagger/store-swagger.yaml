@@ -240,6 +240,7 @@ definitions:
         example: Store-01
         description: Unique identifier of the Store
 
+
   ErrorModel:
     type: object
     required:
