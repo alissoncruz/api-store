@@ -10,28 +10,28 @@ info:
 host: api.com.br
 basePath: /api/store/v1
 schemes:
-- https
+  - https
 consumes:
-- application/json
+  - application/json
 produces:
-- application/json
+  - application/json
 paths:
   /stores:
     post:
       tags:
-      - Store
+        - Store
       summary: Create new store
       description: 'Create new store.'
       operationId: createStore
       produces:
-      - application/json
+        - application/json
       parameters:
-      - in: body
-        name: newStore
-        description: data of the new store
-        required: true
-        schema:
-          $ref: '#/definitions/NewStore'
+        - in: body
+          name: newStore
+          description: data of the new store
+          required: true
+          schema:
+            $ref: '#/definitions/NewStore'
       responses:
 
         '201':
@@ -55,27 +55,28 @@ paths:
           schema:
             $ref: '#/definitions/ErrorModel'
       security:
-      - OauthSecurity:
-        - "bearer"
-  /stores/{code}:
+        - OauthSecurity:
+            - "bearer"
+  /stores/{id}:
     get:
       tags:
-      - Store
+        - Store
       summary: Gets a store
       description: 'get a Store'
       operationId: getStore
       produces:
-      - application/json
+        - application/json
       security:
-      - OauthSecurity:
-        - bearer
+        - OauthSecurity:
+            - bearer
       parameters:
-      - name: code
-        in: path
-        description: Code of the store
-        required: true
-        type: string
-        x-example: 'Store-01'
+        - name: id
+          in: path
+          description: Code of the store
+          required: true
+          type: integer
+          format: int64
+          x-example: 'Store-01'
       responses:
         '200':
           description: Ok
@@ -99,28 +100,29 @@ paths:
             $ref: '#/definitions/ErrorModel'
     put:
       tags:
-      - Store
+        - Store
       summary: Update a store
       description: 'get a store'
       operationId: updateStore
       produces:
-      - application/json
+        - application/json
       security:
-      - OauthSecurity:
-        - bearer
+        - OauthSecurity:
+            - bearer
       parameters:
-      - name: code
-        in: path
-        description: Code of the store
-        required: true
-        type: string
-        x-example: 'Store-01'
-      - name: store
-        in: body
-        description: data of the Store
-        required: true
-        schema:
-          $ref: '#/definitions/UpdateStore'
+        - name: id
+          in: path
+          description: Code of the store
+          required: true
+          type: integer
+          format: int64
+          x-example: 'Store-01'
+        - name: store
+          in: body
+          description: data of the Store
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateStore'
       responses:
         '204':
           description: No Content
@@ -160,16 +162,16 @@ securityDefinitions:
     scopes:
       bearer: Client authorization token - Bearer JWT
 security:
-- OauthSecurity:
-  - bearer
- 
+  - OauthSecurity:
+      - bearer
+
 definitions:
   NewStore:
     description: Store data
     type: object
     required:
-    - name
-    - adress
+      - name
+      - adress
     properties:
       name:
         type: string
@@ -177,13 +179,13 @@ definitions:
         description: Name of the Store
       address:
         $ref: '#/definitions/Address'
-       
+
   Address:
     description: Store data
     type: object
     required:
-    - cep
-    - streat
+      - cep
+      - street
     properties:
       cep:
         type: string
@@ -192,20 +194,19 @@ definitions:
       street:
         type: string
         example: street 45
-        description: Unique identifier of the Master Store        
-       
+        description: Unique identifier of the Master Store
+
 
   Store:
     description: Store data
     type: object
     required:
-    - code
-    - totalValue
-    - currentValue
+      - id
     properties:
-      code:
-        type: string
-        example: Store-01
+      id:
+        type: integer
+        format: int64
+        example: 01
         description: Unique identifier of the Store
       name:
         type: string
@@ -218,8 +219,7 @@ definitions:
     description: Store data
     type: object
     required:
-    - name
-    - status
+      - name
     properties:
       name:
         type: string
@@ -232,18 +232,19 @@ definitions:
     description: Store data
     type: object
     required:
-    - code
+      - id
     properties:
-      code:
-        type: string
+      id:
+        type: integer
+        format: int64
         example: Store-01
         description: Unique identifier of the Store
 
   ErrorModel:
     type: object
     required:
-    - codeBuilderComplete
-    - message
+      - codeBuilderComplete
+      - message
     properties:
       code:
         type: string

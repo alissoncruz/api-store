@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-import static org.hibernate.query.criteria.internal.ValueHandlerFactory.convert;
+import static com.api.store.store.utils.ParserUtil.convertValue;
 import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 public class StoreController extends BaseController implements StoresApi {
@@ -26,24 +27,28 @@ public class StoreController extends BaseController implements StoresApi {
     public ResponseEntity<StoreCodeTO> createStore(@Valid NewStoreTO newStore) {
         System.out.println("Create store");
 
-        StoreEntity storeEntity = convert(newStore, StoreEntity.class);
+        StoreEntity storeEntity = convertValue(newStore, StoreEntity.class);
 
         StoreEntity entity = storeService.createStore(storeEntity);
 
-        StoreCodeTO response = convert(entity, StoreCodeTO.class);
+        StoreCodeTO response = convertValue(entity, StoreCodeTO.class);
 
         return new ResponseEntity<>(response, CREATED);
     }
 
+
     @Override
-    public ResponseEntity<StoreTO> getStore(String code) {
+    public ResponseEntity<StoreTO> getStore(Long id) {
         System.out.println("Get store");
-        return null;
+        StoreEntity entity = storeService.getStore(id);
+        StoreTO response = convertValue(entity, StoreTO.class);
+        return  new ResponseEntity<>(response, OK);
     }
 
     @Override
-    public ResponseEntity<Void> updateStore(String code, @Valid UpdateStoreTO store) {
+    public ResponseEntity<Void> updateStore(Long id, @Valid UpdateStoreTO store) {
+        storeService.updateStore(id, convertValue(store, StoreEntity.class));
         System.out.println("Update store");
-        return null;
+        return new ResponseEntity<>(OK);
     }
 }

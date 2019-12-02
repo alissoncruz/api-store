@@ -6,4 +6,8 @@ public interface StoreService {
 
     StoreEntity createStore(StoreEntity storeEntity);
 
+    StoreEntity getStore(Long id);
+
+    StoreEntity updateStore(Long id, StoreEntity entity);
+
 }
