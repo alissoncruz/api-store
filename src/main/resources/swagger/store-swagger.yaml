@@ -1,0 +1,251 @@
+
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: API-Store
+  description: 'Service management of the Store.'
+  contact:
+    name: Alisson
+    email: alissoncruz.si@gmail.com
+host: api.com.br
+basePath: /api/store/v1
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /stores:
+    post:
+      tags:
+      - Store
+      summary: Create new store
+      description: 'Create new store.'
+      operationId: createStore
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: newStore
+        description: data of the new store
+        required: true
+        schema:
+          $ref: '#/definitions/NewStore'
+      responses:
+
+        '201':
+          description: Create new resource
+          schema:
+            $ref: '#/definitions/StoreCode'
+        '401':
+          description: Authorization Failed
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '404':
+          description: Document not found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+      security:
+      - OauthSecurity:
+        - "bearer"
+  /stores/{code}:
+    get:
+      tags:
+      - Store
+      summary: Gets a store
+      description: 'get a Store'
+      operationId: getStore
+      produces:
+      - application/json
+      security:
+      - OauthSecurity:
+        - bearer
+      parameters:
+      - name: code
+        in: path
+        description: Code of the store
+        required: true
+        type: string
+        x-example: 'Store-01'
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/Store'
+        '401':
+          description: Authorization Failed
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '404':
+          description: Document not found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        default:
+          description: Unexpected Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    put:
+      tags:
+      - Store
+      summary: Update a store
+      description: 'get a store'
+      operationId: updateStore
+      produces:
+      - application/json
+      security:
+      - OauthSecurity:
+        - bearer
+      parameters:
+      - name: code
+        in: path
+        description: Code of the store
+        required: true
+        type: string
+        x-example: 'Store-01'
+      - name: store
+        in: body
+        description: data of the Store
+        required: true
+        schema:
+          $ref: '#/definitions/UpdateStore'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '404':
+          description: Not found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '422':
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        default:
+          description: Unexpected Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+
+
+securityDefinitions:
+  OauthSecurity:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: 'https://api.com.br/security/iam/v1/user-identities/login'
+    tokenUrl: 'https://api.com.br/security/iam/v1/user-identities/login'
+    scopes:
+      bearer: Client authorization token - Bearer JWT
+security:
+- OauthSecurity:
+  - bearer
+ 
+definitions:
+  NewStore:
+    description: Store data
+    type: object
+    required:
+    - name
+    - adress
+    properties:
+      name:
+        type: string
+        example: string
+        description: Name of the Store
+      address:
+        $ref: '#/definitions/Address'
+       
+  Address:
+    description: Store data
+    type: object
+    required:
+    - cep
+    - streat
+    properties:
+      cep:
+        type: string
+        example: 0870900-010
+        description: Name of the Store
+      street:
+        type: string
+        example: street 45
+        description: Unique identifier of the Master Store        
+       
+
+  Store:
+    description: Store data
+    type: object
+    required:
+    - code
+    - totalValue
+    - currentValue
+    properties:
+      code:
+        type: string
+        example: Store-01
+        description: Unique identifier of the Store
+      name:
+        type: string
+        example: string
+        description: Name of the Store
+      address:
+        $ref: '#/definitions/Address'
+
+  UpdateStore:
+    description: Store data
+    type: object
+    required:
+    - name
+    - status
+    properties:
+      name:
+        type: string
+        example: string
+        description: Name of the Store
+      address:
+        $ref: '#/definitions/Address'
+
+  StoreCode:
+    description: Store data
+    type: object
+    required:
+    - code
+    properties:
+      code:
+        type: string
+        example: Store-01
+        description: Unique identifier of the Store
+
+  ErrorModel:
+    type: object
+    required:
+    - codeBuilderComplete
+    - message
+    properties:
+      code:
+        type: string
+      message:
+        type: string

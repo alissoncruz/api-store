@@ -1,31 +1,37 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**
-!**/src/test/**
+====  BASE  ====
+alvo /
+! .mvn / wrapper / maven-wrapper.jar
 
-### STS ###
+# ## STS ###
 .apt_generated
 .classpath
 .factorypath
-.project
-.settings
+.projeto
+.configurações
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
+# ## IntelliJ IDEA ###
+.idéia
+* .iws
+* .iml
+* .ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
+# ## NetBeans ###
+nbproject / private /
+construir /
+nbbuild /
+dist /
+nbdist /
+.nb-gradle /
+/ bin /
 
-### VS Code ###
-.vscode/
+# Mac
+.DS_Store
+
+log /
+alvo /
+.mvn /
+mvnw
+mvnw.cmd
+HELP.md
