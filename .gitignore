@@ -1,6 +1,7 @@
 ====  BASE  ====
 alvo /
-! .mvn / wrapper / maven-wrapper.jar
+target/
+!.mvn/wrapper/maven-wrapper.jar
 
 # ## STS ###
 .apt_generated
@@ -16,6 +17,7 @@ alvo /
 * .iws
 * .iml
 * .ipr
+HELP.md
 
 # ## NetBeans ###
 nbproject / private /

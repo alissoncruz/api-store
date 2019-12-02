@@ -1,4 +1,14 @@
-com\api\store\store\model\StoreModel$StoreModelBuilder.class
-com\api\store\store\model\StoreModel.class
+com\api\store\store\controller\StoreController.class
 com\api\store\store\model\AddressModel.class
 com\api\store\store\StoreApplication.class
+com\api\store\model\StoreTO.class
+com\api\store\store\model\StoreModel$StoreModelBuilder.class
+com\api\store\store\model\StoreModel.class
+com\api\store\store\controller\BaseController.class
+com\api\store\model\AddressTO.class
+com\api\store\model\ErrorModelTO.class
+com\api\store\model\NewStoreTO.class
+com\api\store\model\StoreCodeTO.class
+com\api\store\model\UpdateStoreTO.class
+com\api\store\api\StoresApi.class
+com\api\store\store\model\AddressModel$AddressModelBuilder.class

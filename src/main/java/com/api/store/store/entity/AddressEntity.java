@@ -1,15 +1,16 @@
-package com.api.store.store.model;
+package com.api.store.store.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AddressModel {
+public class AddressEntity {
+    private Long id;
     private String cep;
     private String street;
 }
