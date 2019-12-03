@@ -187,6 +187,11 @@ definitions:
       - cep
       - street
     properties:
+      id:
+        type: integer
+        format: int64
+        example: 01
+        description: Name of the Store
       cep:
         type: string
         example: 0870900-010

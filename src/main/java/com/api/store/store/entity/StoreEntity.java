@@ -15,12 +15,18 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder
 @Entity(name="store")
+@Table(name="store")
 public class StoreEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    @Transient
+
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private Address address;
 }
