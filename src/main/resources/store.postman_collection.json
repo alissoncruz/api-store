@@ -1,0 +1,122 @@
+{
+	"id": "6e0f38a8-b297-c830-7c5b-22785901198a",
+	"name": "store",
+	"description": "",
+	"order": [
+		"7fa55156-83dc-f99d-51c7-bb1933b2b666",
+		"2c1cd15a-1c40-22e9-84d0-7c055474cf75",
+		"dc9c79ae-e821-8b45-5cf3-fff8f602a296"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1575255465147,
+	"owner": "2943959",
+	"public": false,
+	"requests": [
+		{
+			"id": "2c1cd15a-1c40-22e9-84d0-7c055474cf75",
+			"headers": "Accept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/v1/stores/123",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575256503642,
+			"name": "get store",
+			"description": "",
+			"collectionId": "6e0f38a8-b297-c830-7c5b-22785901198a",
+			"responses": [],
+			"rawModeData": "{ \n\t\"name\" : \"string\" , \n\t\"address\" :\n\t{ \n\t\t\"cep\" : \"0870900-010\" , \n\t\t\"street\" : \"street 45\" \n\t\t\n\t} \n\t\n}"
+		},
+		{
+			"id": "7fa55156-83dc-f99d-51c7-bb1933b2b666",
+			"headers": "Accept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/v1/stores",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575256557496,
+			"name": "post store",
+			"description": "",
+			"collectionId": "6e0f38a8-b297-c830-7c5b-22785901198a",
+			"responses": [],
+			"rawModeData": "{ \n\t\"name\" : \"Magazine\" , \n\t\"address\" :\n\t{ \n\t\t\"cep\" : \"0870900-010\" , \n\t\t\"street\" : \"street 45\" \n\t\t\n\t} \n\t\n}"
+		},
+		{
+			"id": "dc9c79ae-e821-8b45-5cf3-fff8f602a296",
+			"headers": "Accept: application/json\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/api/v1/stores/123",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1575256550628,
+			"name": "put store",
+			"description": "",
+			"collectionId": "6e0f38a8-b297-c830-7c5b-22785901198a",
+			"responses": [],
+			"rawModeData": "{ \n\t\"name\" : \"Magazine Update\" , \n\t\"address\" :\n\t{ \n\t\t\"cep\" : \"0870900-010\" , \n\t\t\"street\" : \"street 45\" \n\t\t\n\t} \n\t\n}"
+		}
+	]
+}
